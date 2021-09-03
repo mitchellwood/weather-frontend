@@ -1,0 +1,19 @@
+<div class="control-panel-frame">
+    <app-checkbox [list]="userRoles" (shareCheckedList)="shareCheckedList($event)"></app-checkbox>
+
+    <ng-container *ngIf="(selectedLayer$ | async) as selectedLayer; else noStationSelected">
+        <p>Station id: {{ selectedLayer.feature.properties.station_id }}</p>
+        <p>Station name: {{ selectedLayer.feature.properties.station_name }}</p>
+        <p>Air temperature: {{ selectedLayer.feature.properties.air_temp }}°C</p>
+        <p>Apparent temperature: {{ selectedLayer.feature.properties.apparent_temp }}°C</p>
+        <p>Relative humidity: {{ selectedLayer.feature.properties.rel_hum }}%</p>
+        <p>Atmospheric pressure: {{ selectedLayer.feature.properties.pressure }} hPa</p>
+        <p>Wind speed: {{ selectedLayer.feature.properties.wind_spd_kmh }} kmh</p>
+        <p>Wind direction: {{ selectedLayer.feature.properties.wind_dir }}</p>
+    </ng-container>
+</div>
+
+<ng-template #noStationSelected>
+    <p>No station selected</p>
+</ng-template>
+

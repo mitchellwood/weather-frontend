@@ -1,0 +1,7 @@
+<div class="boxes">
+    <ng-container *ngFor="let a of list">
+        <input type="checkbox" [(ngModel)]="a.checked" id="{{a.name}}" (change)="getSelectedValue(a.checked, a.name)">
+        <label for="{{a.name}}">{{a.name}}</label>
+    </ng-container>
+
+</div>
